@@ -14,7 +14,7 @@
         <many-to-one name="users" class="entity.Users" fetch="select">
             <column name="UserId" length="50" />
         </many-to-one>
-        <property name="ngayLap" type="String">
+        <property name="ngayLap" type="Date">
             <column name="NgayLap" />
         </property>
         <property name="tongTien" type="java.lang.Double">

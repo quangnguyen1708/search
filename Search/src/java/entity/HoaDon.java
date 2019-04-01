@@ -3,6 +3,7 @@ package entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class HoaDon  implements java.io.Serializable {
      private String hoaDonId;
      private CanHo canHo;
      private Users users;
-     private String ngayLap;
+     private Date ngayLap;
      private Double tongTien;
      private String ten;
      private Set<HoaDonDichVu> hoaDonDichVus = new HashSet<HoaDonDichVu>(0);
@@ -29,7 +30,7 @@ public class HoaDon  implements java.io.Serializable {
     public HoaDon(String hoaDonId) {
         this.hoaDonId = hoaDonId;
     }
-    public HoaDon(String hoaDonId, CanHo canHo, Users users, String ngayLap, Double tongTien, String ten, Set<HoaDonDichVu> hoaDonDichVus, Set<HoaDonInternet> hoaDonInternets, Set<HoaDonSinhHoat> hoaDonSinhHoats) {
+    public HoaDon(String hoaDonId, CanHo canHo, Users users, Date ngayLap, Double tongTien, String ten, Set<HoaDonDichVu> hoaDonDichVus, Set<HoaDonInternet> hoaDonInternets, Set<HoaDonSinhHoat> hoaDonSinhHoats) {
        this.hoaDonId = hoaDonId;
        this.canHo = canHo;
        this.users = users;
@@ -62,11 +63,11 @@ public class HoaDon  implements java.io.Serializable {
     public void setUsers(Users users) {
         this.users = users;
     }
-    public String getNgayLap() {
+    public Date getNgayLap() {
         return this.ngayLap;
     }
     
-    public void setNgayLap(String ngayLap) {
+    public void setNgayLap(Date ngayLap) {
         this.ngayLap = ngayLap;
     }
     public Double getTongTien() {
