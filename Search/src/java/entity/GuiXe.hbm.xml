@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 1, 2019 7:59:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.GuiXe" table="GuiXe" schema="dbo" catalog="DuAn1" optimistic-lock="version">
+        <id name="guiXeId" type="string">
+            <column name="GuiXeId" length="50" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hoaDonDichVu" class="entity.HoaDonDichVu" fetch="select">
+            <column name="HoaDonDichVuId" />
+        </many-to-one>
+        <many-to-one name="loaiXe" class="entity.LoaiXe" fetch="select">
+            <column name="LoaixeId" length="10" />
+        </many-to-one>
+        <property name="soLuong" type="java.lang.Short">
+            <column name="SoLuong" />
+        </property>
+        <property name="tienGuiXe" type="java.lang.Double">
+            <column name="TienGuiXe" precision="53" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

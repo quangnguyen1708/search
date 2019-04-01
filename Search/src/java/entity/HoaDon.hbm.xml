@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 1, 2019 7:59:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.HoaDon" table="HoaDon" schema="dbo" catalog="DuAn1" optimistic-lock="version">
+        <id name="hoaDonId" type="String">
+            <column name="HoaDonId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="canHo" class="entity.CanHo" fetch="select">
+            <column name="CanHoId" length="50" />
+        </many-to-one>
+        <many-to-one name="users" class="entity.Users" fetch="select">
+            <column name="UserId" length="50" />
+        </many-to-one>
+        <property name="ngayLap" type="String">
+            <column name="NgayLap" />
+        </property>
+        <property name="tongTien" type="java.lang.Double">
+            <column name="TongTien" precision="53" scale="0" />
+        </property>
+        <property name="ten" type="String">
+            <column name="Ten" />
+        </property>
+        <set name="hoaDonDichVus" table="HoaDonDichVu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="HoaDonId" />
+            </key>
+            <one-to-many class="entity.HoaDonDichVu" />
+        </set>
+        <set name="hoaDonInternets" table="HoaDonInternet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="HoaDonId" />
+            </key>
+            <one-to-many class="entity.HoaDonInternet" />
+        </set>
+        <set name="hoaDonSinhHoats" table="HoaDonSinhHoat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="HoaDonId" />
+            </key>
+            <one-to-many class="entity.HoaDonSinhHoat" />
+        </set>
+    </class>
+</hibernate-mapping>

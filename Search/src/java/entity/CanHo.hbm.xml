@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 1, 2019 7:59:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.CanHo" table="CanHo" schema="dbo" catalog="DuAn1" optimistic-lock="version">
+        <id name="canHoId" type="string">
+            <column name="CanHoId" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="maSoCanHo" type="string">
+            <column name="MaSoCanHo" length="10" />
+        </property>
+        <property name="khachHangId" type="string">
+            <column name="KhachHangId" length="50" />
+        </property>
+        <property name="tang" type="java.lang.Short">
+            <column name="Tang" />
+        </property>
+        <set name="thongTinKhachHangs" table="ThongTinKhachHang" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CanHoId" length="50" />
+            </key>
+            <one-to-many class="entity.ThongTinKhachHang" />
+        </set>
+        <set name="hoaDonInternets" table="HoaDonInternet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CanHoId" length="50" />
+            </key>
+            <one-to-many class="entity.HoaDonInternet" />
+        </set>
+        <set name="hoaDons" table="HoaDon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CanHoId" length="50" />
+            </key>
+            <one-to-many class="entity.HoaDon" />
+        </set>
+        <set name="hoaDonDichVus" table="HoaDonDichVu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CanHoId" length="50" />
+            </key>
+            <one-to-many class="entity.HoaDonDichVu" />
+        </set>
+        <set name="hoaDonSinhHoats" table="HoaDonSinhHoat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CanHoId" length="50" />
+            </key>
+            <one-to-many class="entity.HoaDonSinhHoat" />
+        </set>
+    </class>
+</hibernate-mapping>

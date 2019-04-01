@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 1, 2019 7:59:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.HoaDonDichVu" table="HoaDonDichVu" schema="dbo" catalog="DuAn1" optimistic-lock="version">
+        <id name="hoaDonDichVuId" type="serializable">
+            <column name="HoaDonDichVuId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="canHo" class="entity.CanHo" fetch="select">
+            <column name="CanHoId" length="50" />
+        </many-to-one>
+        <many-to-one name="hoaDon" class="entity.HoaDon" fetch="select">
+            <column name="HoaDonId" />
+        </many-to-one>
+        <property name="tienDichVuCoBan" type="java.lang.Double">
+            <column name="TienDichVuCoBan" precision="53" scale="0" />
+        </property>
+        <property name="tienGuiXe" type="java.lang.Double">
+            <column name="TienGuiXe" precision="53" scale="0" />
+        </property>
+        <property name="tongTien" type="java.lang.Double">
+            <column name="TongTien" precision="53" scale="0" />
+        </property>
+        <property name="thang" type="serializable">
+            <column name="Thang" />
+        </property>
+        <set name="guiXes" table="GuiXe" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="HoaDonDichVuId" />
+            </key>
+            <one-to-many class="entity.GuiXe" />
+        </set>
+    </class>
+</hibernate-mapping>

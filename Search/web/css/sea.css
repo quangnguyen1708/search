@@ -1,0 +1,49 @@
+body{
+    background: whitesmoke;
+}
+
+.box{
+    margin: 100px auto;
+    width: 300px;
+    height: 50px;
+
+}
+
+
+.search{
+    border-radius: 5px;    
+    height: 22px;   
+    border: 1px solid gray;
+}
+.search:hover{
+    border-color:  rgb(247, 123, 123);
+
+}
+.search:focus{
+    outline: none;
+}
+
+.button1{
+    height: 26px;
+    width: 80px;
+    border-radius: 5px; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    background-color: rgb(243, 74, 74);
+    border: none;
+}
+.button1:hover{
+    background:orange;
+}
+.pod{
+    text-align: center;
+    margin-top: -83px;
+}
+
+
+
+/* tạo khung hóa đơn */
+/* Điều Chỉnh ô sản phẩm */
+
