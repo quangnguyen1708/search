@@ -5,7 +5,8 @@
  */
 package dao;
 
-import entity.HoaDon;
+
+import entity.HoaDonSinhHoat;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,42 +16,41 @@ import until.HibernateUtil;
  *
  * @author Admin
  */
-public class HoaDonDAO {
-
-    public static List<HoaDon> layDanhSachHoaDon(String user) {
-        List<HoaDon> list = null;
+public class HoaDonSHDAO {
+     public static List<HoaDonSinhHoat> layDanhSachHoaDon(String user) {
+        List<HoaDonSinhHoat> list = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = "from HoaDon";
+        String sql = "from HoaDonSinhHoat";
         if (user.length() > 0) {
-            sql += " where HoaDonId like '%" + user + "%'";
+            sql += " where HoaDonSinhHoatId like '%" + user + "%'";
         }
         Query query = session.createQuery(sql);
         list = query.list();
         return list;
     }
 
-    public HoaDonDAO() {
+    public HoaDonSHDAO() {
 
     }
 
-    public List<HoaDon> timID(String id) { // List tim HD tham so la CanHoId ;
-        List<HoaDon> list = null;
+    public List<HoaDonSinhHoat> timID(String id) { // List tim HD tham so la CanHoId ;
+        List<HoaDonSinhHoat> list = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = " from HoaDon where CanHoId ='" + id + "'";
+        String sql = " from HoaDonSinhHoat where CanHoId ='" + id + "'";
         Query query = session.createQuery(sql);
         list = query.list();
     
         return list;
     }
 
-    public static HoaDon layTTHoaDon(String HoaDonId) {
+    public static HoaDonSinhHoat layTTHoaDon(String HoaDonId) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        HoaDon hd = (HoaDon) session.get(HoaDon.class, HoaDonId);
+        HoaDonSinhHoat hdsh = (HoaDonSinhHoat) session.get(HoaDonSinhHoat.class, HoaDonId);
         session.close();
-        return hd;
+        return hdsh;
     }
 
     public static void main(String[] args) {

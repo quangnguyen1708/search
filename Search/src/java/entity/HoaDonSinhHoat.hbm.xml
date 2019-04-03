@@ -4,7 +4,7 @@
 <!-- Generated Apr 1, 2019 7:59:35 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entity.HoaDonSinhHoat" table="HoaDonSinhHoat" schema="dbo" catalog="DuAn1" optimistic-lock="version">
-        <id name="hoaDonSinhHoatId" type="serializable">
+        <id name="hoaDonSinhHoatId" type="string">
             <column name="HoaDonSinhHoatId" />
             <generator class="assigned" />
         </id>
@@ -14,7 +14,7 @@
         <many-to-one name="hoaDon" class="entity.HoaDon" fetch="select">
             <column name="HoaDonId" />
         </many-to-one>
-        <property name="ngayThang" type="serializable">
+        <property name="ngayThang" type="date">
             <column name="NgayThang" />
         </property>
         <property name="chiSoDienBanDau" type="java.lang.Integer">

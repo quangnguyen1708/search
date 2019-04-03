@@ -11,13 +11,13 @@
         <property name="pass" type="string">
             <column name="Pass" length="50" />
         </property>
-        <property name="ten" type="String">
+        <property name="ten" type="string">
             <column name="Ten" />
         </property>
-        <property name="email" type="String">
+        <property name="email" type="string">
             <column name="Email" />
         </property>
-        <property name="soDt" type="String">
+        <property name="soDt" type="string">
             <column name="SoDT" />
         </property>
         <set name="hoaDons" table="HoaDon" inverse="true" lazy="true" fetch="select">

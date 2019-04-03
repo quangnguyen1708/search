@@ -4,9 +4,17 @@
         <servlet-name>controllersearch</servlet-name>
         <servlet-class>controller.controllersearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HoaDonSinhHoatDAO</servlet-name>
+        <servlet-class>dao.SearchHoaDonSHseverlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controllersearch</servlet-name>
         <url-pattern>/controllersearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HoaDonSinhHoatDAO</servlet-name>
+        <url-pattern>/HoaDonSinhHoatDAO</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

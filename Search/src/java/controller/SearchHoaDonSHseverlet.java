@@ -5,55 +5,47 @@
  */
 package controller;
 
-import entity.HoaDon;
+import dao.HoaDonDAO;
+import dao.HoaDonSHDAO;
+import entity.HoaDonSinhHoat;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import until.HibernateUtil;
+import java.util.List;
+import javax.servlet.annotation.WebServlet;
 
 /**
  *
  * @author Admin
  */
-public class controllersearch extends HttpServlet {
+@WebServlet(name = "SearchHoaDonSHseverlet", urlPatterns = {"/SearchHoaDonSHseverlet"})
+public class SearchHoaDonSHseverlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    public List<HoaDonSinhHoat> list;
+
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String action = request.getParameter("action"); // gan gia tri cho action tu form cua search.jsp de truyen du lieu
+        String search = request.getParameter("txtsearch"); // ten input trong form action, tham so muon tim ( can ho m muon tim)
+        String url = null; // dien truyen den trang web, mac ding la null
         try (PrintWriter out = response.getWriter()) {
-         String action = request.getParameter("action");
-            if (action.equals("Search")) {
-                Session session = HibernateUtil.getSessionFactory().openSession();   // mở session
-                String search = request.getParameter("txtsearch");      // lấy dữ liệu tiwf ô Search
+            if (action.equals("Search")) { // neu nhan vao input co value la Search, se thuc hien code duoi
+                HoaDonSHDAO dao = new HoaDonSHDAO(); // goi hamm DAO de lay list timID
+                list = dao.timID(search);// tao 1 lisst va gat gia tri cho list timID, co tham so searxh dong 43
 
-                List<HoaDon> list;
-//                if (!search.trim().isEmpty()) { // Neu o search ko trống
+                request.setAttribute("listForeach", list);// set ten cho list de show du lieu
+                request.setAttribute("tenID", search);
 
-                Query query = session.createQuery("Select HoadonID,CanHoId,NgayLap,TongTien from HoaDon where CanHoId ='" + search + "'");  //select theo CanHoId
-
-                list = query.list();
-
-                request.setAttribute("HoaDon", list); //Truyền dữ liệu từ list vào Attribute có tên HoaDon bên Search.jsp
-                request.getRequestDispatcher("search.jsp").forward(request, response);
-//                }
+                url = "/searchHoaDonSH.jsp"; // den trang web
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+                rd.forward(request, response);
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 
