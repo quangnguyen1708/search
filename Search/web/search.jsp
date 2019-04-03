@@ -39,7 +39,7 @@
                     <div class="colum1" style="border-radius:5px ;padding: 15px;box-shadow: 0px 0px 5px gray;
                          margin: 10px auto;
                          margin-left: 35px;
-                         text-align: center
+                         text-align: left;
                          ">
 
                         <p>Mã Hóa Đơn: ${hd.getHoaDonId()}</p>

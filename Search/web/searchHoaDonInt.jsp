@@ -1,19 +1,24 @@
 <%-- 
-    Document   : searchHoaDonSH
-    Created on : Apr 3, 2019, 8:08:12 AM
+    Document   : searchHoaDonInt
+    Created on : Apr 3, 2019, 8:51:12 AM
     Author     : Admin
 --%>
-<%@page import="controller.SearchHoaDonSHseverlet"%>
-<%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="controller.SearchHoaDonIntseverlet"%>
+<%@page import="entity.HoaDonInternet"%>
+<%@page import="dao.HoaDonIntDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
-<%@page import="entity.HoaDonSinhHoat"%>
-<%@page import="dao.HoaDonSHDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Chung cư Ple Ple Ple....!!!</title>
@@ -21,14 +26,14 @@
         <link href="css/sea.css" rel="stylesheet" type="text/css">
 
     </head>
-    <%  SearchHoaDonSHseverlet li = new SearchHoaDonSHseverlet();
+    <%  SearchHoaDonIntseverlet li = new SearchHoaDonIntseverlet();
 
         NumberFormat nf = NumberFormat.getInstance();
         nf.setMinimumIntegerDigits(0);%>
 
     <body>
-        <form action="SearchHoaDonSHseverlet">
-            <h2 style=" text-align: center; ">HÓA ĐƠN SINH HOẠT</h2> 
+        <form action="SearchHoaDonIntseverlet">
+            <h2 style=" text-align: center; ">HÓA ĐƠN INTERNET</h2> 
             <div class="box">                
 
                 <div class="pod">
@@ -45,23 +50,17 @@
                          text-align: left;
                          ">
 
-                        <p>Mã Hóa Đơn SH: ${hd.getHoaDonSinhHoatId()}</p>
+                        <p>Mã Hóa Đơn Internet: ${hd.getHoaDonInternetId()}</p>                      
                         <p>Mã Căn Hộ: ${hd.getCanHo().getCanHoId()}</p>                       
-                        <p>Ngày Lập: ${hd.getNgayThang()}</p>                     
-                        <p>Chỉ số điện ban đầu: ${hd.getChiSoDienBanDau()}</p>
-                        <p>Chỉ số điện cuối: ${hd.getChiSoDienCuoi()}</p>
-                        <p>Tổng tiền điện: ${hd.getTienDien()} VND</p>
-                        <p>Chỉ số nước ban đầu: ${hd.getChiSoNuocBanDau()}</p>
-                        <p>Chỉ số nước cuối: ${hd.getChiSoNuocCuoi()}</p>
-                        <p>Tổng tiền nước: ${hd.getTienNuoc()}</p>
+                        <p>Ngày Lập: ${hd.getNgayThang()}</p>   
+                        <p>Tổng Tiền: ${hd.getTien()} VNĐ</p> 
+                        
                     </div>
                 </c:forEach>
 
             </div>
             <footer style="color:black; margin-top: 478px; text-align: center;" id="foot1"> Chung cư Ple Ple Ple....!!!</footer>
         </form>
-
-
-
+      
     </body>
 </html>

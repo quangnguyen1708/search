@@ -5,7 +5,7 @@
  */
 package dao;
 
-import entity.HoaDon;
+import entity.HoaDonInternet;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,42 +15,41 @@ import until.HibernateUtil;
  *
  * @author Admin
  */
-public class HoaDonDAO {
-
-    public static List<HoaDon> layDanhSachHoaDon(String user) {
-        List<HoaDon> list = null;
+public class HoaDonIntDAO {
+    public static List<HoaDonInternet> layDanhSachHoaDon(String user) {
+        List<HoaDonInternet> list = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = "from HoaDon";
+        String sql = "from HoaDonInternet";
         if (user.length() > 0) {
-            sql += " where HoaDonId like '%" + user + "%'";
+            sql += " where HoaDonInternet like '%" + user + "%'";
         }
         Query query = session.createQuery(sql);
         list = query.list();
         return list;
     }
 
-    public HoaDonDAO() {
+    public HoaDonIntDAO() {
 
     }
 
-    public List<HoaDon> timID(String id) { // List tim HD tham so la CanHoId ;
-        List<HoaDon> list = null;
+    public List<HoaDonInternet> timID(String id) { // List tim HD tham so la CanHoId ;
+        List<HoaDonInternet> list = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = " from HoaDon where CanHoId ='" + id + "' order by NgayLap asc";
+        String sql = " from HoaDonInternet where CanHoId ='" + id + "' order by NgayThang asc";
         Query query = session.createQuery(sql);
         list = query.list();
     
         return list;
     }
 
-    public static HoaDon layTTHoaDon(String HoaDonId) {
+    public static HoaDonInternet layTTHoaDon(String HoaDonId) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        HoaDon hd = (HoaDon) session.get(HoaDon.class, HoaDonId);
+        HoaDonInternet hdint = (HoaDonInternet) session.get(HoaDonInternet.class, HoaDonId);
         session.close();
-        return hd;
+        return hdint;
     }
 
     public static void main(String[] args) {

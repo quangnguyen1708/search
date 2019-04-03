@@ -38,7 +38,7 @@ public class HoaDonSHDAO {
         List<HoaDonSinhHoat> list = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = " from HoaDonSinhHoat where CanHoId ='" + id + "'";
+        String sql = " from HoaDonSinhHoat where CanHoId ='" + id + "' order by NgayThang asc";
         Query query = session.createQuery(sql);
         list = query.list();
     
